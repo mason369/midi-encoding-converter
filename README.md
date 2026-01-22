@@ -1,5 +1,7 @@
 # MIDI Encoding Converter
 
+[中文文档](README_CN.md)
+
 A Python tool to convert text event encodings in MIDI files. Supports conversion between various character encodings such as Shift_JIS, GBK, UTF-8, and more.
 
 ## Features
@@ -15,7 +17,7 @@ A Python tool to convert text event encodings in MIDI files. Supports conversion
 ### From Source
 
 ```bash
-git clone https://github.com/yourusername/midi-encoding-converter.git
+git clone https://github.com/mason369/midi-encoding-converter.git
 cd midi-encoding-converter
 ```
 
