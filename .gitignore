@@ -70,3 +70,11 @@ Thumbs.db
 
 # Test files
 *_converted.mid
+test_*.mid
+input_converted.mid
+
+# Claude
+.claude/
+
+# Temp files
+nul
