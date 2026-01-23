@@ -5,14 +5,12 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version tag (e.g., v1.1.0)'
-        required: true
-        default: 'v1.1.0'
+
+permissions:
+  contents: write
 
 jobs:
-  build:
+  build-and-release:
     runs-on: windows-latest
 
     steps:
@@ -31,38 +29,13 @@ jobs:
 
     - name: Build executable
       run: |
-        pyinstaller --clean --noconfirm `
-          --name "MIDI_Encoder" `
-          --onefile `
-          --windowed `
-          --hidden-import PyQt6 `
-          --hidden-import PyQt6.QtCore `
-          --hidden-import PyQt6.QtGui `
-          --hidden-import PyQt6.QtWidgets `
-          --hidden-import chardet `
-          midi_converter_standalone.py
-
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: MIDI_Encoder
-        path: dist/MIDI_Encoder.exe
-
-  release:
-    needs: build
-    runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/')
-
-    steps:
-    - name: Download artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: MIDI_Encoder
+        pyinstaller --clean --noconfirm --name "MIDI_Encoder" --onefile --windowed --hidden-import PyQt6 --hidden-import PyQt6.QtCore --hidden-import PyQt6.QtGui --hidden-import PyQt6.QtWidgets --hidden-import chardet midi_converter_standalone.py
 
     - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/')
       uses: softprops/action-gh-release@v1
       with:
-        files: MIDI_Encoder.exe
+        files: dist/MIDI_Encoder.exe
         generate_release_notes: true
         body: |
           ## MIDI 编码转换器 / MIDI Encoding Converter
@@ -79,5 +52,9 @@ jobs:
           - 🌐 中英文界面切换 / Bilingual interface
           - 🎨 改进的用户界面 / Improved UI
 
+          ### 参考 / References
+
+          - [MIDI 编码测试仓库](https://github.com/oxygen-dioxide/midi-encoding-test)
+          - [MidiShow 社区讨论](https://tat.midishow.com/t/topic/5772)
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
