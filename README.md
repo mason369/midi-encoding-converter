@@ -4,6 +4,8 @@
 
 一个用于转换 MIDI 文件中文本编码的 Python 工具。支持 Shift_JIS、GBK、UTF-8 等多种编码格式之间的转换。
 
+> 在线体验：[https://telknet.cc/](https://telknet.cc/)
+
 ![界面预览](https://img.shields.io/badge/界面-Qt6-blue) ![Python](https://img.shields.io/badge/Python-3.8+-green) ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ## 功能特点

@@ -4,6 +4,8 @@
 
 A Python tool to convert text event encodings in MIDI files. Supports conversion between various character encodings such as Shift_JIS, GBK, UTF-8, and more.
 
+> Online demo: [https://telknet.cc/](https://telknet.cc/)
+
 ![GUI](https://img.shields.io/badge/GUI-Qt6-blue) ![Python](https://img.shields.io/badge/Python-3.8+-green) ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ## Features
